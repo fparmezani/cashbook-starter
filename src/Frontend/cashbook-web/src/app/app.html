@@ -1,0 +1,11 @@
+<header class="topbar">
+  <a routerLink="/" class="brand">CashBook</a>
+  <nav class="nav" aria-label="Principal">
+    @for (link of links; track link.path) {
+      <a [routerLink]="link.path" routerLinkActive="nav__link--active" class="nav__link">{{ link.label }}</a>
+    }
+  </nav>
+</header>
+<main class="container">
+  <router-outlet />
+</main>

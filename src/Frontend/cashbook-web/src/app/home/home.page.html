@@ -1,0 +1,17 @@
+<section class="card">
+  <h1>CashBook</h1>
+  <p>Livro-caixa pessoal. Comece verificando se a API está no ar.</p>
+
+  <button type="button" (click)="testConnection()" [disabled]="state().kind === 'loading'">
+    Testar conexão com a API
+  </button>
+
+  @let current = state();
+  @if (current.kind === 'loading') {
+    <p class="status">Consultando /health…</p>
+  } @else if (current.kind === 'success') {
+    <p class="status status--ok" role="status">API respondeu: {{ current.status }}</p>
+  } @else if (current.kind === 'error') {
+    <p class="status status--error" role="alert">{{ current.message }}</p>
+  }
+</section>

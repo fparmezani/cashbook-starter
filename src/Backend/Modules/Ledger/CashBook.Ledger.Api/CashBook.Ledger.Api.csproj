@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CashBook.Ledger.Application\CashBook.Ledger.Application.csproj" />
+    <ProjectReference Include="..\CashBook.Ledger.Infrastructure\CashBook.Ledger.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\CashBook.BuildingBlocks.Api\CashBook.BuildingBlocks.Api.csproj" />
+  </ItemGroup>
+
+</Project>

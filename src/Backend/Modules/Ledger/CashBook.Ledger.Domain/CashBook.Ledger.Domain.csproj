@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CashBook.BuildingBlocks\CashBook.BuildingBlocks.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Backend\CashBook.BuildingBlocks\CashBook.BuildingBlocks.csproj" />
+    <ProjectReference Include="..\..\src\Backend\Modules\Ledger\CashBook.Ledger.Domain\CashBook.Ledger.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Backend\Modules\Ledger\CashBook.Ledger.Application\CashBook.Ledger.Application.csproj" />
+  </ItemGroup>
+
+</Project>

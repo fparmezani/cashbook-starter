@@ -1,0 +1,77 @@
+<h1>Categorias</h1>
+
+<section class="card">
+  <h2>{{ editing() ? 'Editar categoria' : 'Nova categoria' }}</h2>
+
+  <form class="form" [formGroup]="form" (ngSubmit)="save()">
+    <label class="field">
+      <span>Nome</span>
+      <input type="text" formControlName="name" [maxlength]="nameMaxLength" placeholder="Ex.: Mercado" autocomplete="off" />
+    </label>
+    @if (form.controls.name.touched && form.controls.name.hasError('required')) {
+      <p class="field-error">Informe o nome da categoria.</p>
+    }
+
+    <label class="field">
+      <span>Tipo</span>
+      <select formControlName="type">
+        @for (type of types; track type) {
+          <option [value]="type">{{ typeLabels[type] }}</option>
+        }
+      </select>
+    </label>
+    @if (editing()) {
+      <p class="hint">O tipo não muda depois de criado: os lançamentos dependem dele.</p>
+    }
+
+    <div class="actions">
+      <button type="submit" [disabled]="saving()">{{ editing() ? 'Salvar alterações' : 'Criar categoria' }}</button>
+      @if (editing()) {
+        <button type="button" class="button--secondary" (click)="cancelEdit()" [disabled]="saving()">Cancelar</button>
+      }
+    </div>
+
+    @if (formError(); as message) {
+      <p class="status status--error" role="alert">{{ message }}</p>
+    }
+  </form>
+</section>
+
+<section class="card">
+  <h2>Categorias cadastradas</h2>
+
+  @if (loading()) {
+    <p class="status">Carregando…</p>
+  } @else if (listError(); as message) {
+    <p class="status status--error" role="alert">{{ message }}</p>
+  } @else {
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Tipo</th>
+          <th><span class="visually-hidden">Ações</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (category of categories(); track category.id) {
+          <tr>
+            <td>{{ category.name }}</td>
+            <td>
+              <span class="badge" [class.badge--income]="category.type === 'Income'" [class.badge--expense]="category.type === 'Expense'">
+                {{ typeLabels[category.type] }}
+              </span>
+            </td>
+            <td class="table__actions">
+              <button type="button" class="button--link" (click)="edit(category)">Editar</button>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="3" class="empty">Nenhuma categoria cadastrada ainda.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>

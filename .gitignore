@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+*.user
+TestResults/
+node_modules/
+dist/
+.angular/
+*.db
+.playwright-mcp/
